@@ -8,7 +8,7 @@ Automated google search operation.
 Clone the repository
 
 ```bash
-git clone https://github.com/bmshamsnahid/Automation-With-Selenium-And-Node.js.git
+git clone https://github.com/thanhtinhpas1/UI-Automation-test.git
 ```
 
 Install dependencies
