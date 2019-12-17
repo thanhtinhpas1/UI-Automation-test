@@ -1,25 +1,25 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 2,
-    "passes": 2,
+    "tests": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2019-12-17T11:00:33.470Z",
-    "end": "2019-12-17T11:01:05.221Z",
-    "duration": 31751,
-    "testsRegistered": 2,
-    "passPercent": 100,
+    "failures": 1,
+    "start": "2019-12-17T18:39:22.880Z",
+    "end": "2019-12-17T18:39:38.141Z",
+    "duration": 15261,
+    "testsRegistered": 1,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "passPercentClass": "success",
+    "passPercentClass": "danger",
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "4d9dc9df-bc6e-4e8d-a104-f5712d157aad",
+    "uuid": "eecf7a53-560d-437d-8f98-199e1b136247",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,23 +28,23 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "fa1fb985-30ba-4663-8847-aec5d1373ef1",
-        "title": "Test UI: automation create class",
-        "fullFile": "d:\\UNIVERSITY\\Testing Software\\Deadline\\Week 09 - Automation test UI\\Source\\test\\UI.test.js",
-        "file": "\\test\\UI.test.js",
+        "uuid": "75ff1204-94ac-46a7-b5cb-fbc410eccc60",
+        "title": "Test UI: automation create teacher",
+        "fullFile": "d:\\UNIVERSITY\\Testing Software\\Deadline\\Week 09 - Automation test UI\\Source\\test\\createTeacher.test.js",
+        "file": "\\test\\createTeacher.test.js",
         "beforeHooks": [
           {
             "title": "\"before all\" hook",
-            "fullTitle": "Test UI: automation create class \"before all\" hook",
+            "fullTitle": "Test UI: automation create teacher \"before all\" hook",
             "timedOut": false,
-            "duration": 27,
+            "duration": 21,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "page = new Page();\ndriver = page.driver;\n// await page.visit(\"http://localhost:4200/login\");",
             "err": {},
             "isRoot": false,
-            "uuid": "c8d44371-b8ea-48d0-b961-e45632523bd4",
+            "uuid": "b78839bd-c211-492f-8e06-edcf0be74913",
             "isHook": true,
             "skipped": false
           }
@@ -52,7 +52,7 @@
         "afterHooks": [
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Test UI: automation create class \"after each\" hook",
+            "fullTitle": "Test UI: automation create teacher \"after each\" hook",
             "timedOut": false,
             "duration": 0,
             "pass": false,
@@ -61,56 +61,40 @@
             "code": "// await page.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "be9d5c8f-a4ce-46c4-9184-990e0b9353d8",
+            "uuid": "3d0974e8-faee-404c-ae5b-1c950ec720b3",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "TEST CASE 4: Create class without list student",
-            "fullTitle": "Test UI: automation create class TEST CASE 4: Create class without list student",
+            "title": "TESTCASE 7: Create teacher with excel file",
+            "fullTitle": "Test UI: automation create teacher TESTCASE 7: Create teacher with excel file",
             "timedOut": false,
-            "duration": 8390,
-            "state": "passed",
-            "speed": "slow",
-            "pass": true,
-            "fail": false,
+            "duration": 15224,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
             "pending": false,
-            "code": "await page.visit(\"http://localhost:4200/login\");\nawait utils.readListClass().then(async classes => {\n    for (const item of classes) {\n        console.log(item);\n        var rs = await page.addClassWithoutStudents(item.name, item.program);\n        await expect(rs).to.be.undefined;\n        await (await page.driver).navigate().to(\"http://localhost:4200/logout\");\n    }\n}).catch(function (err) {\n    console.log(new Error(err));\n})",
-            "err": {},
+            "code": "await page.visit(\"https://nhoma.herokuapp.com/login\");\nawait utils.readListTeachers().then(async teachers => {\n    console.log(teachers);\n    for (const item of teachers) {\n        var rs = await page.creatTeacherWithExcelFile(item);\n        await expect(rs).to.be.undefined;\n        await (await page.driver).navigate().to(\"https://nhoma.herokuapp.com/logout\");\n    }\n}).catch(function (err) {\n    console.log(new Error(err));\n    throw err;\n})",
+            "err": {
+              "message": "WebDriverError: element not interactable\n  (Session info: chrome=79.0.3945.79)\n  (Driver info: chromedriver=70.0.3538.97 (d035916fe243477005bc95fe2a5778b8f20b6ae1),platform=Windows NT 10.0.18362 x86_64)",
+              "estack": "WebDriverError: element not interactable\n  (Session info: chrome=79.0.3945.79)\n  (Driver info: chromedriver=70.0.3538.97 (d035916fe243477005bc95fe2a5778b8f20b6ae1),platform=Windows NT 10.0.18362 x86_64)\n    at Object.checkLegacyResponse (node_modules\\selenium-webdriver\\lib\\error.js:585:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:533:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:468:26)\n    at processTicksAndRejections (internal/process/task_queues.js:86:5)"
+            },
             "isRoot": false,
-            "uuid": "d2c3e1d3-af4a-4466-a90e-e0c2929760a3",
-            "isHook": false,
-            "skipped": false
-          },
-          {
-            "title": "TEST CASE 5: Create class with full of informations",
-            "fullTitle": "Test UI: automation create class TEST CASE 5: Create class with full of informations",
-            "timedOut": false,
-            "duration": 23257,
-            "state": "passed",
-            "speed": "slow",
-            "pass": true,
-            "fail": false,
-            "pending": false,
-            "code": "await page.visit(\"http://localhost:4200/login\");\nawait utils.readListClass().then(async classes => {\n    for (const item of classes) {\n        console.log(item);\n        var rs = await page.addWithFullInfo(item.name, item.program);\n        await expect(rs).to.equal(item.name);\n        await (await page.driver).navigate().to(\"http://localhost:4200/logout\");\n    }\n}).catch(function (err) {\n    console.log(new Error(err));\n})",
-            "err": {},
-            "isRoot": false,
-            "uuid": "4ce4fd38-57c9-4f64-b88f-7413d58348c0",
+            "uuid": "79564b66-06b6-40be-9208-e68ec0c67896",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
-        "passes": [
-          "d2c3e1d3-af4a-4466-a90e-e0c2929760a3",
-          "4ce4fd38-57c9-4f64-b88f-7413d58348c0"
+        "passes": [],
+        "failures": [
+          "79564b66-06b6-40be-9208-e68ec0c67896"
         ],
-        "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 31647,
+        "duration": 15224,
         "root": false,
         "rootEmpty": false,
         "_timeout": 500000
