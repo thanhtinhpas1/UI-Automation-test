@@ -1,14 +1,14 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
-    "passes": 1,
+    "tests": 2,
+    "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2019-12-15T07:42:57.633Z",
-    "end": "2019-12-15T07:43:05.198Z",
-    "duration": 7565,
-    "testsRegistered": 1,
+    "start": "2019-12-17T11:00:33.470Z",
+    "end": "2019-12-17T11:01:05.221Z",
+    "duration": 31751,
+    "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "38e891df-612d-46f5-b3a1-c5a69b63e08b",
+    "uuid": "4d9dc9df-bc6e-4e8d-a104-f5712d157aad",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,23 +28,23 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "92f4a1fb-1a86-4ee8-9c74-a04fb61f0910",
-        "title": "Change role user automation firefox",
+        "uuid": "fa1fb985-30ba-4663-8847-aec5d1373ef1",
+        "title": "Test UI: automation create class",
         "fullFile": "d:\\UNIVERSITY\\Testing Software\\Deadline\\Week 09 - Automation test UI\\Source\\test\\UI.test.js",
         "file": "\\test\\UI.test.js",
         "beforeHooks": [
           {
-            "title": "\"before each\" hook",
-            "fullTitle": "Change role user automation firefox \"before each\" hook",
+            "title": "\"before all\" hook",
+            "fullTitle": "Test UI: automation create class \"before all\" hook",
             "timedOut": false,
-            "duration": 7526,
+            "duration": 27,
             "pass": false,
             "fail": false,
             "pending": false,
-            "code": "page = new Page();\ndriver = page.driver;\nawait page.visit(\"http://localhost:4200/login\");",
+            "code": "page = new Page();\ndriver = page.driver;\n// await page.visit(\"http://localhost:4200/login\");",
             "err": {},
             "isRoot": false,
-            "uuid": "f43b0c58-2110-436d-b2a2-672236630473",
+            "uuid": "c8d44371-b8ea-48d0-b961-e45632523bd4",
             "isHook": true,
             "skipped": false
           }
@@ -52,47 +52,65 @@
         "afterHooks": [
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Change role user automation firefox \"after each\" hook",
+            "fullTitle": "Test UI: automation create class \"after each\" hook",
             "timedOut": false,
-            "duration": 1,
+            "duration": 0,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "// await page.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "cce45f35-94e8-4143-aa05-3f9d5423b935",
+            "uuid": "be9d5c8f-a4ce-46c4-9184-990e0b9353d8",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Test UI automation: Tạo lớp học mới",
-            "fullTitle": "Change role user automation firefox Test UI automation: Tạo lớp học mới",
+            "title": "TEST CASE 4: Create class without list student",
+            "fullTitle": "Test UI: automation create class TEST CASE 4: Create class without list student",
             "timedOut": false,
-            "duration": 5,
+            "duration": 8390,
             "state": "passed",
-            "speed": "fast",
+            "speed": "slow",
             "pass": true,
             "fail": false,
             "pending": false,
-            "code": "// await page.driver.wait(async () => {\nawait page.createClasses();\n// })",
+            "code": "await page.visit(\"http://localhost:4200/login\");\nawait utils.readListClass().then(async classes => {\n    for (const item of classes) {\n        console.log(item);\n        var rs = await page.addClassWithoutStudents(item.name, item.program);\n        await expect(rs).to.be.undefined;\n        await (await page.driver).navigate().to(\"http://localhost:4200/logout\");\n    }\n}).catch(function (err) {\n    console.log(new Error(err));\n})",
             "err": {},
             "isRoot": false,
-            "uuid": "7e247911-3b8b-4bb8-9cec-fd87e3856709",
+            "uuid": "d2c3e1d3-af4a-4466-a90e-e0c2929760a3",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "TEST CASE 5: Create class with full of informations",
+            "fullTitle": "Test UI: automation create class TEST CASE 5: Create class with full of informations",
+            "timedOut": false,
+            "duration": 23257,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "await page.visit(\"http://localhost:4200/login\");\nawait utils.readListClass().then(async classes => {\n    for (const item of classes) {\n        console.log(item);\n        var rs = await page.addWithFullInfo(item.name, item.program);\n        await expect(rs).to.equal(item.name);\n        await (await page.driver).navigate().to(\"http://localhost:4200/logout\");\n    }\n}).catch(function (err) {\n    console.log(new Error(err));\n})",
+            "err": {},
+            "isRoot": false,
+            "uuid": "4ce4fd38-57c9-4f64-b88f-7413d58348c0",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "7e247911-3b8b-4bb8-9cec-fd87e3856709"
+          "d2c3e1d3-af4a-4466-a90e-e0c2929760a3",
+          "4ce4fd38-57c9-4f64-b88f-7413d58348c0"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 5,
+        "duration": 31647,
         "root": false,
         "rootEmpty": false,
         "_timeout": 500000
